@@ -13,6 +13,7 @@
 		3C3C815E1E2376E0007273E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C3C815C1E2376E0007273E2 /* Main.storyboard */; };
 		3C3C81601E2376E0007273E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3C815F1E2376E0007273E2 /* Assets.xcassets */; };
 		3C3C81631E2376E0007273E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C3C81611E2376E0007273E2 /* LaunchScreen.storyboard */; };
+		3C3C816C1E237706007273E2 /* DTEllipseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3C816B1E237706007273E2 /* DTEllipseButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		3C3C815F1E2376E0007273E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C3C81621E2376E0007273E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C3C81641E2376E0007273E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C3C816A1E237706007273E2 /* DTEllipseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTEllipseButton.h; sourceTree = "<group>"; };
+		3C3C816B1E237706007273E2 /* DTEllipseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTEllipseButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				3C3C81571E2376E0007273E2 /* AppDelegate.m */,
 				3C3C81591E2376E0007273E2 /* ViewController.h */,
 				3C3C815A1E2376E0007273E2 /* ViewController.m */,
+				3C3C816A1E237706007273E2 /* DTEllipseButton.h */,
+				3C3C816B1E237706007273E2 /* DTEllipseButton.m */,
 				3C3C815C1E2376E0007273E2 /* Main.storyboard */,
 				3C3C815F1E2376E0007273E2 /* Assets.xcassets */,
 				3C3C81611E2376E0007273E2 /* LaunchScreen.storyboard */,
@@ -153,6 +158,7 @@
 			files = (
 				3C3C815B1E2376E0007273E2 /* ViewController.m in Sources */,
 				3C3C81581E2376E0007273E2 /* AppDelegate.m in Sources */,
+				3C3C816C1E237706007273E2 /* DTEllipseButton.m in Sources */,
 				3C3C81551E2376E0007273E2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
