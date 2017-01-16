@@ -28,7 +28,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self _setup];
+        [self setupButton];
     }
     return self;
 }
@@ -37,7 +37,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self _setup];
+        [self setupButton];
     }
     return self;
 }
@@ -45,10 +45,10 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self updateLayerProperties];
+    [self reloadButton];
 }
 
-- (void)_setup
+- (void)setupButton
 {
     self.borderBackgroundColor = [UIColor whiteColor];
     self.borderColor = [UIColor lightGrayColor];
@@ -70,14 +70,14 @@
 - (void)setTitle:(NSString *)title forState:(UIControlState)state
 {
     [super setTitle:title forState:state];
-    [self updateLayerProperties];
+    [self reloadButton];
 }
 
 - (void)setTextColor:(UIColor *)textColor
 {
     if (textColor != _textColor) {
         _textColor = textColor;
-        [self updateLayerProperties];
+        [self reloadButton];
     }
 }
 
@@ -85,7 +85,7 @@
 {
     if (_borderColor != borderColor) {
         _borderColor = borderColor;
-        [self updateLayerProperties];
+        [self reloadButton];
     }
 }
 
@@ -93,7 +93,7 @@
 {
     if (_borderWidth != borderWidth) {
         _borderWidth = borderWidth;
-        [self updateLayerProperties];
+        [self reloadButton];
     }
 }
 
@@ -101,7 +101,7 @@
 {
     if (_borderBackgroundColor != borderBackgroundColor) {
         _borderBackgroundColor = borderBackgroundColor;
-        [self updateLayerProperties];
+        [self reloadButton];
     }
 }
 
@@ -118,7 +118,7 @@
     }
 }
 
-- (void)updateLayerProperties
+- (void)reloadButton
 {
     self.titleLabel.textColor = self.textColor;
     self.backgroundView.layer.borderColor = [self.borderColor CGColor];

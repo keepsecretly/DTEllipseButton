@@ -13,13 +13,13 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/keepsecretly/DTEllipseButton"
 
   s.license      = "MIT"
-  s.author             = { "NiM Sopana" => "sopana.thiti@gmail.com" }
+  s.author       = { "NiM Sopana" => "sopana.thiti@gmail.com" }
 
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/keepsecretly/DTEllipseButton.git", :tag => "#{s.version}" }
 
   s.source_files  = "DTEllipseButton", "DTEllipseButton/DTEllipseButton/*.{h,m}"
-  s.framework  = "UIKit"
-  s.requires_arc = true
+  s.framework  	  = "UIKit"
+  s.requires_arc  = true
 
 end
