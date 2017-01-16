@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DTEllipseButton"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A button in ellipse shape with border and icon."
 
   s.description  = <<-DESC
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author       = { "NiM Sopana" => "sopana.thiti@gmail.com" }
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/keepsecretly/DTEllipseButton.git", :tag => "#{s.version}" }
 
   s.source_files  = "DTEllipseButton", "DTEllipseButton/DTEllipseButton/*.{h,m}"
