@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DTEllipseButton"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A button in ellipse shape with border and icon."
 
   s.description  = <<-DESC
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/keepsecretly/DTEllipseButton.git", :tag => "#{s.version}" }
 
-  s.source_files  = "DTEllipseButton", "DTEllipseButton/DTEllipseButton/DTEllipseButton.h", "DTEllipseButton/DTEllipseButton/DTEllipseButton.m"
+  s.source_files  = "DTEllipseButton/DTEllipseButton/DTEllipseButton.h", "DTEllipseButton/DTEllipseButton/DTEllipseButton.m"
   s.framework  	  = "UIKit"
   s.requires_arc  = true
 
