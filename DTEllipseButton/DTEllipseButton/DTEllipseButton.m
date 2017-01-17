@@ -70,12 +70,14 @@ CGFloat MARGIN = 4;
     
     if (self.backgroundView == nil) {
         self.backgroundView = [UIView new];
+        self.backgroundView.userInteractionEnabled = NO;
         self.backgroundView.frame = CGRectMake(0, 4, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-MARGIN*2);
         [self insertSubview:self.backgroundView atIndex:0];
     }
     
     if (self.backgroundImageView == nil) {
         self.backgroundImageView = [UIImageView new];
+        self.backgroundImageView.userInteractionEnabled = NO;
         self.backgroundImageView.frame = CGRectMake(0, 0, CGRectGetHeight(self.frame), CGRectGetHeight(self.frame));
         [self insertSubview:self.backgroundImageView aboveSubview:self.backgroundView];
     }
