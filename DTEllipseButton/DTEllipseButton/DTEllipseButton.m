@@ -138,7 +138,7 @@ CGFloat MARGIN = 4;
     CGFloat height = CGRectGetHeight(self.frame);
     
     if (self.imageView.image) {
-        self.backgroundView.frame = CGRectMake(height*0.5, MARGIN, CGRectGetWidth(self.frame)-height*0.5-MARGIN*2, height-MARGIN*2);
+        self.backgroundView.frame = CGRectMake(0, MARGIN, CGRectGetWidth(self.frame)-MARGIN*2, height-MARGIN*2);
         self.backgroundImageView.hidden = NO;
         self.backgroundImageView.frame = CGRectMake(0, MARGIN, CGRectGetHeight(self.frame)-MARGIN*2, CGRectGetHeight(self.frame)-MARGIN*2);
     } else {
