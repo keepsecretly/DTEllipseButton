@@ -15,6 +15,8 @@
 
 @end
 
+CGFloat MARGIN = 4;
+
 @implementation DTEllipseButton
 
 /*
@@ -60,15 +62,15 @@
     self.imageBackgroundColor = [UIColor lightGrayColor];
     self.imageBorderWidth = 0.0f;
 
-    self.contentEdgeInsets = UIEdgeInsetsMake(4, 0, 4, 4);
-    self.titleEdgeInsets = UIEdgeInsetsMake(4, 8, 4, 4);
+    self.contentEdgeInsets = UIEdgeInsetsMake(MARGIN, 0, MARGIN, MARGIN);
+    self.titleEdgeInsets = UIEdgeInsetsMake(MARGIN, MARGIN*2, MARGIN, MARGIN);
     self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.imageEdgeInsets = UIEdgeInsetsZero;
     
     if (self.backgroundView == nil) {
         self.backgroundView = [UIView new];
-        self.backgroundView.frame = CGRectMake(0, 4, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-8);
+        self.backgroundView.frame = CGRectMake(0, 4, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-MARGIN*2);
         [self insertSubview:self.backgroundView atIndex:0];
     }
     
@@ -81,7 +83,7 @@
 
 - (void)setImageEdgeInsets:(UIEdgeInsets)imageEdgeInsets
 {
-    [super setImageEdgeInsets:UIEdgeInsetsMake(4, 4, 4, 14)];
+    [super setImageEdgeInsets:UIEdgeInsetsMake(4, MARGIN*0.5, 4, MARGIN*6.5)];
 }
 
 - (void)setTitle:(NSString *)title forState:(UIControlState)state
@@ -136,12 +138,12 @@
     CGFloat height = CGRectGetHeight(self.frame);
     
     if (self.imageView.image) {
-        self.backgroundView.frame = CGRectMake(height*0.5, 4, CGRectGetWidth(self.frame)-height*0.5, height-8);
+        self.backgroundView.frame = CGRectMake(height*0.5, MARGIN, CGRectGetWidth(self.frame)-height*0.5-MARGIN*2, height-MARGIN*2);
         self.backgroundImageView.hidden = NO;
-        self.backgroundImageView.frame = CGRectMake(0, 4, CGRectGetHeight(self.frame)-8, CGRectGetHeight(self.frame)-8);
+        self.backgroundImageView.frame = CGRectMake(0, MARGIN, CGRectGetHeight(self.frame)-MARGIN*2, CGRectGetHeight(self.frame)-MARGIN*2);
     } else {
         self.backgroundImageView.hidden = YES;
-        self.backgroundView.frame = CGRectMake(0, 4, CGRectGetWidth(self.frame), height-8);
+        self.backgroundView.frame = CGRectMake(0, MARGIN, CGRectGetWidth(self.frame), height-MARGIN*2);
     }
 }
 
@@ -156,24 +158,22 @@
     self.titleLabel.textColor = self.textColor;
     self.backgroundView.layer.borderColor = [self.borderColor CGColor];
     self.backgroundView.layer.borderWidth = self.borderWidth;
-    self.backgroundView.layer.cornerRadius = (CGRectGetHeight(self.frame)-8)*0.5;
+    self.backgroundView.layer.cornerRadius = (CGRectGetHeight(self.frame)-MARGIN*2)*0.5;
+
+    CGRect frame = self.frame;
+    CGSize size = [self sizeThatFits:CGSizeMake(MAXFLOAT, CGRectGetHeight(self.frame))];
 
     if (self.imageView.image) {
-        self.backgroundImageView.layer.cornerRadius = (CGRectGetHeight(self.frame)-8)*0.5;
+        self.backgroundImageView.layer.cornerRadius = (CGRectGetHeight(self.frame)-MARGIN*2)*0.5;
         self.backgroundImageView.layer.borderColor = [self.imageBorderColor CGColor];
         self.backgroundImageView.layer.borderWidth = self.imageBorderWidth;
         self.backgroundImageView.backgroundColor = self.imageBackgroundColor;
-        
-        if (self.titleEdgeInsets.left < (CGRectGetHeight(self.frame)-8)*0.5) {
-            UIEdgeInsets inset = self.titleEdgeInsets;
-            inset.left += 4;
-            self.titleEdgeInsets = inset;
-        }
+
+        size.width += CGRectGetHeight(self.frame)-MARGIN;
+    } else {
+        size.width += (self.titleEdgeInsets.left + self.titleEdgeInsets.right);
     }
     
-    CGRect frame = self.frame;
-    CGSize size = [self sizeThatFits:CGSizeMake(MAXFLOAT, CGRectGetHeight(self.frame))];
-    size.width += (self.titleEdgeInsets.left + self.titleEdgeInsets.right);
     frame.size.width = size.width;
     
     self.frame = frame;
