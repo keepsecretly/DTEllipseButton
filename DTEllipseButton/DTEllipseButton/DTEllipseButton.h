@@ -17,4 +17,8 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *borderBackgroundColor;
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 
+@property (nonatomic, strong) IBInspectable UIColor *imageBorderColor;
+@property (nonatomic, strong) IBInspectable UIColor *imageBackgroundColor;
+@property (nonatomic) IBInspectable CGFloat imageBorderWidth;
+
 @end

@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self.button setImage:[UIImage imageNamed:@"01"] forState:UIControlStateNormal];
+    [self.button setImage:[UIImage imageNamed:@"ic_tab_reward_category"] forState:UIControlStateNormal];
     [self.button setTitle:@"Lorem ipsum le poriem" forState:UIControlStateNormal];
 }
 
