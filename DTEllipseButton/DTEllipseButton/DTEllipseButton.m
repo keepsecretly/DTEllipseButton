@@ -172,6 +172,7 @@ CGFloat MARGIN = 4;
     self.imageView.hidden = YES;
     self.buttonTitle.textColor = self.textColor;
     self.buttonTitle.text = self.titleLabel.text;
+    self.buttonTitle.font = self.titleLabel.font;
     self.backgroundView.layer.borderColor = [self.borderColor CGColor];
     self.backgroundView.layer.borderWidth = self.borderWidth;
     self.backgroundView.layer.cornerRadius = (CGRectGetHeight(self.frame)-MARGIN*2)*0.5;
@@ -187,7 +188,7 @@ CGFloat MARGIN = 4;
         self.backgroundImageView.layer.borderWidth = self.imageBorderWidth;
         self.backgroundImageView.backgroundColor = self.imageBackgroundColor;
 
-        size.width += (self.titleEdgeInsets.left + self.titleEdgeInsets.right + CGRectGetHeight(self.frame)-MARGIN*3);
+        size.width += (self.titleEdgeInsets.left + self.titleEdgeInsets.right + CGRectGetWidth(self.backgroundImageView.frame));
     } else {
         size.width += (self.titleEdgeInsets.left + self.titleEdgeInsets.right + MARGIN*4);
     }
