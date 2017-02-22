@@ -11,7 +11,9 @@
 @interface DTEllipseButton ()
 
 @property (nonatomic, strong) UIView *backgroundView;
-@property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIImageView *iconImageView;
+@property (nonatomic, strong) UIView *backgroundImageView;
+@property (nonatomic, strong) UILabel *buttonTitle;
 
 @end
 
@@ -62,30 +64,35 @@ CGFloat MARGIN = 4;
     self.imageBackgroundColor = [UIColor lightGrayColor];
     self.imageBorderWidth = 0.0f;
 
-    self.contentEdgeInsets = UIEdgeInsetsMake(MARGIN, 0, MARGIN, MARGIN);
-    self.titleEdgeInsets = UIEdgeInsetsMake(MARGIN, MARGIN*2, MARGIN, MARGIN);
     self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.imageEdgeInsets = UIEdgeInsetsZero;
     
     if (self.backgroundView == nil) {
         self.backgroundView = [UIView new];
         self.backgroundView.userInteractionEnabled = NO;
-        self.backgroundView.frame = CGRectMake(0, 4, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-MARGIN*2);
+        self.backgroundView.frame = CGRectMake(0, MARGIN, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-MARGIN*2);
         [self insertSubview:self.backgroundView atIndex:0];
+        
+        self.buttonTitle = [UILabel new];
+        self.buttonTitle.frame = CGRectInset(self.backgroundView.bounds, CGRectGetHeight(self.frame)-MARGIN*2, MARGIN);
+        [self.backgroundView addSubview:self.buttonTitle];
     }
     
+//    self.buttonTitle.backgroundColor = [UIColor colorWithRed:1 green:0.5 blue:0 alpha:0.5];
+    
     if (self.backgroundImageView == nil) {
-        self.backgroundImageView = [UIImageView new];
+        self.backgroundImageView = [UIView new];
         self.backgroundImageView.userInteractionEnabled = NO;
         self.backgroundImageView.frame = CGRectMake(0, 0, CGRectGetHeight(self.frame), CGRectGetHeight(self.frame));
+        self.backgroundImageView.clipsToBounds = YES;
         [self insertSubview:self.backgroundImageView aboveSubview:self.backgroundView];
+        
+        self.iconImageView = [UIImageView new];
+        self.iconImageView.frame = CGRectInset(self.backgroundImageView.bounds, MARGIN*1.5, MARGIN*1.5);
+        self.iconImageView.contentMode = self.imageView.contentMode;
+        [self.backgroundImageView addSubview:self.iconImageView];
     }
-}
-
-- (void)setImageEdgeInsets:(UIEdgeInsets)imageEdgeInsets
-{
-    [super setImageEdgeInsets:UIEdgeInsetsMake(4, MARGIN*0.5, 4, MARGIN*6.5)];
 }
 
 - (void)setTitle:(NSString *)title forState:(UIControlState)state
@@ -136,17 +143,22 @@ CGFloat MARGIN = 4;
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    
+    self.titleLabel.hidden = YES;
+
     CGFloat height = CGRectGetHeight(self.frame);
     
     if (self.imageView.image) {
-        self.backgroundView.frame = CGRectMake(0, MARGIN, CGRectGetWidth(self.frame)-MARGIN*2, height-MARGIN*2);
+        self.backgroundView.frame = CGRectMake(0, MARGIN, CGRectGetWidth(self.frame), height-MARGIN*2);
         self.backgroundImageView.hidden = NO;
-        self.backgroundImageView.frame = CGRectMake(0, MARGIN, CGRectGetHeight(self.frame)-MARGIN*2, CGRectGetHeight(self.frame)-MARGIN*2);
+        self.backgroundImageView.frame = CGRectMake(0, MARGIN, height-MARGIN*2, height-MARGIN*2);
+        self.iconImageView.frame = CGRectInset(self.backgroundImageView.bounds, MARGIN, MARGIN);
+        self.buttonTitle.frame = CGRectMake(height, 0, CGRectGetWidth(self.frame)-height-MARGIN*2, height-MARGIN*2);
     } else {
         self.backgroundImageView.hidden = YES;
         self.backgroundView.frame = CGRectMake(0, MARGIN, CGRectGetWidth(self.frame), height-MARGIN*2);
+        self.buttonTitle.frame = CGRectMake(MARGIN*2, 0, CGRectGetWidth(self.frame)-MARGIN*2, height-MARGIN*2);
     }
+
 }
 
 - (void)didMoveToWindow
@@ -157,7 +169,9 @@ CGFloat MARGIN = 4;
 
 - (void)reloadButton
 {
-    self.titleLabel.textColor = self.textColor;
+    self.imageView.hidden = YES;
+    self.buttonTitle.textColor = self.textColor;
+    self.buttonTitle.text = self.titleLabel.text;
     self.backgroundView.layer.borderColor = [self.borderColor CGColor];
     self.backgroundView.layer.borderWidth = self.borderWidth;
     self.backgroundView.layer.cornerRadius = (CGRectGetHeight(self.frame)-MARGIN*2)*0.5;
@@ -166,14 +180,16 @@ CGFloat MARGIN = 4;
     CGSize size = [self sizeThatFits:CGSizeMake(MAXFLOAT, CGRectGetHeight(self.frame))];
 
     if (self.imageView.image) {
+        self.iconImageView.image = self.imageView.image;
+        self.iconImageView.contentMode = self.imageView.contentMode;
         self.backgroundImageView.layer.cornerRadius = (CGRectGetHeight(self.frame)-MARGIN*2)*0.5;
         self.backgroundImageView.layer.borderColor = [self.imageBorderColor CGColor];
         self.backgroundImageView.layer.borderWidth = self.imageBorderWidth;
         self.backgroundImageView.backgroundColor = self.imageBackgroundColor;
 
-        size.width += CGRectGetHeight(self.frame)-MARGIN;
+        size.width += (self.titleEdgeInsets.left + self.titleEdgeInsets.right + CGRectGetHeight(self.frame)-MARGIN*3);
     } else {
-        size.width += (self.titleEdgeInsets.left + self.titleEdgeInsets.right);
+        size.width += (self.titleEdgeInsets.left + self.titleEdgeInsets.right + MARGIN*4);
     }
     
     frame.size.width = size.width;
