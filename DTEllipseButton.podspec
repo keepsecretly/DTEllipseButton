@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DTEllipseButton"
-  s.version      = "0.0.10"
+  s.version      = "0.0.11"
   s.summary      = "A button in ellipse shape with border and icon."
 
   s.description  = <<-DESC
