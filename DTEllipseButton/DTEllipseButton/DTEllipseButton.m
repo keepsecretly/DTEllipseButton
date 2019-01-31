@@ -151,7 +151,7 @@ CGFloat MARGIN = 4;
         self.backgroundView.frame = CGRectMake(0, MARGIN, CGRectGetWidth(self.frame), height-MARGIN*2);
         self.backgroundImageView.hidden = NO;
         self.backgroundImageView.frame = CGRectMake(0, MARGIN, height-MARGIN*2, height-MARGIN*2);
-        self.iconImageView.frame = CGRectInset(self.backgroundImageView.bounds, MARGIN, MARGIN);
+        self.iconImageView.frame = CGRectMake(0, 0, height-MARGIN*2, height-MARGIN*2);//CGRectInset(self.backgroundImageView.bounds, MARGIN, MARGIN);
         self.buttonTitle.frame = CGRectMake(height, 0, CGRectGetWidth(self.frame)-height-MARGIN*2, height-MARGIN*2);
     } else {
         self.backgroundImageView.hidden = YES;
