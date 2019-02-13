@@ -4,10 +4,10 @@ Pod::Spec.new do |s|
   s.summary      = "A button in ellipse shape with border and icon."
 
   s.description  = <<-DESC
-  
+
   A button in ellipse shape with border and icon.
   It is similar to youtube capsule button that display category in trending tab. You can easily customize icon and color as UIButton do.
-  
+
                    DESC
 
   s.homepage     = "https://github.com/keepsecretly/DTEllipseButton"
@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/keepsecretly/DTEllipseButton.git", :tag => "#{s.version}" }
 
   s.source_files  = "DTEllipseButton/DTEllipseButton/DTEllipseButton.h", "DTEllipseButton/DTEllipseButton/DTEllipseButton.m"
+  s.resources     = "Assets.xcassets/*"
   s.framework  	  = "UIKit"
   s.requires_arc  = true
 
